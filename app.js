@@ -7,6 +7,7 @@ var express = require('express')
   , routes = require('./routes')
   , user = require('./routes/user')
   , http = require('http')
+  , mongoose = require('mongoose')
   , path = require('path');
 
 var app = express();
@@ -26,6 +27,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
+
+mongoose.connect('mongodb://localhost/pollsdb');
 
 app.get('/', routes.index);
 app.get('/users', user.list);
