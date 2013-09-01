@@ -21,6 +21,7 @@ exports.index = function(req, res){
 exports.pollIndex = function(req, res, next) {
   Poll.find().sort('-pubDate').limit(5).exec(function(err, polls) {
     if (err)
+      // Pass it along to the next error-handling middleware to deal with
       next("Uh oh! Something went wrong when fetching polls from the database.");
     else {
       var questions = new Array();
