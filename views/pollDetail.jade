@@ -1,0 +1,13 @@
+//- Example of template inheritance
+//- A default layout (layout.jade) was created with the skeleton project
+extends layout
+
+block content
+  if poll
+    h1= "Poll: " + poll.question
+    ul
+    each choice in poll.choices
+      //- Equivalent to `li= choice.choiceText`
+      li #{choice.choiceText} 
+  else
+    p No poll found :(

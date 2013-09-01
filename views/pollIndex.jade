@@ -1,0 +1,17 @@
+//- Example of template inheritance
+//- A default layout (layout.jade) was created with the skeleton project
+extends layout
+
+block content
+  h1= title
+  if latest_poll_list
+    ul
+      each poll in latest_poll_list
+        li
+          //- Jade makes it possible to write inline JavaScript code in templates.
+          //- Anything after an equals sign ('=') is 'buffered code'
+          //- which outputs the result of evaluating the JavaScript expression.
+          //- Refer to the Jade docs: http://jade-lang.com/reference/
+          a(href='/polls/' + poll._id)= poll.question
+  else
+    p No Polls Found :(
